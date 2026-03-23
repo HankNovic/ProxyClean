@@ -5,7 +5,7 @@
 ## 数据概览
 
 - 代理池文件：`good_socks.txt`
-- 原始直链：`https://raw.githubusercontent.com/HankNovic/ProxyClean/refs/heads/main/good_socks.txt`
+- 原始直链：https://raw.githubusercontent.com/HankNovic/ProxyClean/refs/heads/main/good_socks.txt
 - 测试出口接口：`https://api.ipify.org`
 - 测试节点：**中国 福建 厦门 移动**
 
