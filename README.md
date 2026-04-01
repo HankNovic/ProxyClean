@@ -4,9 +4,12 @@
 
 ## 数据概览
 
-- 代理池文件：`good_socks.txt`
-- 原始直链：https://raw.githubusercontent.com/HankNovic/ProxyClean/refs/heads/main/good_socks.txt
-- 测试出口接口：`https://api.ipify.org`
+- 代理池文件：`SOCKS5.txt`
+- 原始数据文件：`SOCKS5_RAW.txt`
+- 原始直链（可用池）：https://raw.githubusercontent.com/HankNovic/ProxyClean/refs/heads/main/SOCKS5.txt
+- 原始直链（原始池）：https://raw.githubusercontent.com/HankNovic/ProxyClean/refs/heads/main/SOCKS5_RAW.txt
+- 连通性验证：SOCKS5 握手 + SOCKS5 CONNECT 目标探测
+- 默认 CONNECT 探测目标：`1.1.1.1:53`、`8.8.8.8:53`
 - 测试节点：**中国 福建 厦门 移动**
 
 说明：
@@ -17,9 +20,11 @@
 
 - **国内可用优先**：在中国大陆网络环境下进行连通性验证，通过后才进入可用池。
 - **多源聚合清洗**：汇总多个公开 SOCKS5 源，统一解析、去重、筛选。
-- **并发测速排序**：并发测试连通与延迟，结果按延迟从低到高排序。
+- **并发验证排序**：并发执行连通与延迟验证，输出优先近期可用、延迟表现更稳定的节点。
+- **真实可用性校验**：握手通过后可追加 SOCKS5 CONNECT 目标探测，只有握手与 CONNECT 同时通过才判定成功。
+- **统一错误策略**：握手与 CONNECT 共用软/硬错误分类与去重聚合，降低短时网络抖动带来的误判。
 - **持续保活更新**：在周期性全量拉取之间进行保活检查，自动淘汰失效节点。
-- **滚动维护**：`good_socks.txt` 持续更新，尽量反映近期可用状态。
+- **滚动维护**：`SOCKS5.txt` 持续更新，尽量反映近期可用状态。
 
 ## 代理来源（致谢）
 
@@ -35,7 +40,7 @@
 
 ## 文件格式
 
-`good_socks.txt` 采用纯文本格式：
+`SOCKS5.txt` 与 `SOCKS5_RAW.txt` 均采用纯文本格式：
 
 ```text
 ip:port
@@ -50,7 +55,7 @@ ip:port
 
 ### 1) 读取代理
 
-从 `good_socks.txt` 按行读取，例如：
+从 `SOCKS5_RAW.txt` 按行读取，例如：
 
 ```text
 1.2.3.4:1080
@@ -121,7 +126,9 @@ print(resp.text)
 
 - 全量拉取与清洗：默认约每小时进行一次。
 - 间隔保活检测：在两次全量之间进行周期性存活验证。
-- 可用性说明：`good_socks.txt` 仅代表当前或近期探测结果，不保证长期稳定。
+- 网络守护：在线探测开关；网络探测异常时可暂停当轮验证，恢复后自动继续。
+- 历史清理：按保留天数（30/15/7/1）进行超时清理，覆盖历史统计与运行日志保留策略。
+- 可用性说明：`SOCKS5.txt` 仅代表当前或近期探测结果，不保证长期稳定。
 
 适用场景：临时抓取、测试环境、学习研究。  
 不建议直接用于高合规、高稳定性要求的生产出口。
