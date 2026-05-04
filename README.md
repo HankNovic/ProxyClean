@@ -10,7 +10,7 @@
 - 原始直链（原始池）：https://raw.githubusercontent.com/HankNovic/ProxyClean/refs/heads/main/SOCKS5_RAW.txt
 - 连通性验证：SOCKS5 握手 + SOCKS5 CONNECT 目标探测
 - 默认 CONNECT 探测目标：`1.1.1.1:53`、`8.8.8.8:53`
-- 测试节点：**中国 福建 厦门 移动**
+- 测试节点：**中国 福建 厦门 电信**
 
 说明：
 - 列表中的代理来自公开免费来源。
