@@ -35,6 +35,7 @@
 - [roosterkid/openproxylist](https://github.com/roosterkid/openproxylist)
 - [hookzof/socks5_list](https://github.com/hookzof/socks5_list)
 - [gfpcom/free-proxy-list](https://github.com/gfpcom/free-proxy-list)
+- [dpangestuw/Free-Proxy](https://github.com/dpangestuw/Free-Proxy)
 
 > 说明：本仓库不对任一单独来源做质量背书，仅依据实际探测结果进行技术筛选。
 
