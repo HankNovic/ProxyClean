@@ -1,5 +1,9 @@
 # ProxyClean
 
+<!-- hy-mt2-i18n:start -->
+**中文** · [English](./README_en.md) · [日本語](./README_ja.md) · [Español](./README_es.md)
+<!-- hy-mt2-i18n:end -->
+
 公开整理并持续更新的 SOCKS5 代理数据仓库。
 
 ## 数据概览
